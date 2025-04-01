@@ -1,0 +1,815 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /api/v1/users/{id}:
+    get:
+      tags:
+      - user-controller
+      operationId: getUserById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserDTO"
+    put:
+      tags:
+      - user-controller
+      operationId: updateUserById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserUpdateDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserDTO"
+    delete:
+      tags:
+      - user-controller
+      operationId: deleteUserById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+  /api/v1/reviews/{id}:
+    get:
+      tags:
+      - review-controller
+      operationId: getReviewById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReviewDTO"
+    put:
+      tags:
+      - review-controller
+      operationId: updateReviewById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReviewDTO"
+    delete:
+      tags:
+      - review-controller
+      operationId: deleteReviewById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+  /api/v1/movieList/{movieListId}/movies/{movieId}:
+    put:
+      tags:
+      - movie-list-controller
+      operationId: addMovieToListById
+      parameters:
+      - name: movieListId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: movieId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MovieListDTO"
+    delete:
+      tags:
+      - movie-list-controller
+      operationId: deleteMovieFromListById
+      parameters:
+      - name: movieListId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: movieId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MovieListDTO"
+  /api/v1/movieList/{id}:
+    get:
+      tags:
+      - movie-list-controller
+      operationId: getMovieListById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MovieListDTO"
+    put:
+      tags:
+      - movie-list-controller
+      operationId: updateMovieListById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MovieListDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MovieListDTO"
+    delete:
+      tags:
+      - movie-list-controller
+      operationId: deleteMovieListById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+  /api/v1/users/register:
+    post:
+      tags:
+      - user-controller
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserDTO"
+  /api/v1/reviews:
+    get:
+      tags:
+      - review-controller
+      operationId: getAllReviews
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReviewDTO"
+    post:
+      tags:
+      - review-controller
+      operationId: createReview
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewInputDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReviewDTO"
+  /api/v1/movieList:
+    get:
+      tags:
+      - movie-list-controller
+      operationId: getAllMovieLists
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MovieListDTO"
+    post:
+      tags:
+      - movie-list-controller
+      operationId: createMovieList
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MovieListDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MovieListDTO"
+  /api/v1/auth/generateToken:
+    post:
+      tags:
+      - authentication-controller
+      operationId: authenticateAndGetToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthRequestDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/JwtDTO"
+  /api/v1/users:
+    get:
+      tags:
+      - user-controller
+      operationId: getUsers
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserDTO"
+  /api/v1/searchIndex:
+    get:
+      tags:
+      - search-index-controller
+      operationId: getMovieList
+      parameters:
+      - name: keyword
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MovieDTO"
+  /api/v1/reviews/users/{userId}:
+    get:
+      tags:
+      - review-controller
+      operationId: getAllReviewsForUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReviewDTO"
+  /api/v1/reviews/movies/{movieId}:
+    get:
+      tags:
+      - review-controller
+      operationId: getAllReviewsForMovie
+      parameters:
+      - name: movieId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReviewDTO"
+  /api/v1/movieList/users/{userId}:
+    get:
+      tags:
+      - movie-list-controller
+      operationId: getAllMovieListsForUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MovieListDTO"
+  /api/v1/movie/{id}:
+    get:
+      tags:
+      - movie-controller
+      operationId: getMovieById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MovieDTO"
+components:
+  schemas:
+    LocalTime:
+      type: object
+      properties:
+        hour:
+          type: integer
+          format: int32
+        minute:
+          type: integer
+          format: int32
+        second:
+          type: integer
+          format: int32
+        nano:
+          type: integer
+          format: int32
+    Movie:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        overview:
+          type: string
+        posterPath:
+          type: string
+        movieId:
+          type: integer
+          format: int64
+        searchIndex:
+          $ref: "#/components/schemas/SearchIndex"
+        movieLists:
+          type: array
+          items:
+            $ref: "#/components/schemas/MovieList"
+        reviewList:
+          type: array
+          items:
+            $ref: "#/components/schemas/Review"
+    MovieList:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        creationDate:
+          type: string
+          format: date
+        creationTime:
+          $ref: "#/components/schemas/LocalTime"
+        description:
+          type: string
+        userMovieList:
+          $ref: "#/components/schemas/User"
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        reviewText:
+          type: string
+        creationDate:
+          type: string
+          format: date
+        creationTime:
+          $ref: "#/components/schemas/LocalTime"
+        reviewUser:
+          $ref: "#/components/schemas/User"
+        reviewMovie:
+          $ref: "#/components/schemas/Movie"
+    SearchIndex:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        creationDate:
+          type: string
+          format: date
+        creationTime:
+          $ref: "#/components/schemas/LocalTime"
+        search:
+          type: integer
+          format: int32
+        keyword:
+          type: string
+        movieList:
+          type: array
+          items:
+            $ref: "#/components/schemas/Movie"
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        creationDate:
+          type: string
+          format: date
+        creationTime:
+          $ref: "#/components/schemas/LocalTime"
+        role:
+          type: string
+          enum:
+          - ROLE_ADMIN
+          - ROLE_USER
+        reviewList:
+          type: array
+          items:
+            $ref: "#/components/schemas/Review"
+        listMovieList:
+          type: array
+          items:
+            $ref: "#/components/schemas/MovieList"
+    UserUpdateDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          maxLength: 30
+          minLength: 3
+          type: string
+        email:
+          maxLength: 30
+          minLength: 3
+          type: string
+        password:
+          maxLength: 30
+          minLength: 3
+          type: string
+        role:
+          type: string
+        reviewList:
+          type: array
+          items:
+            $ref: "#/components/schemas/Review"
+    UserDTO:
+      required:
+      - email
+      - name
+      - password
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          maxLength: 30
+          minLength: 3
+          type: string
+        email:
+          maxLength: 30
+          minLength: 3
+          type: string
+        password:
+          maxLength: 30
+          minLength: 3
+          type: string
+        creationDate:
+          type: string
+          format: date
+        creationTime:
+          $ref: "#/components/schemas/LocalTime"
+        role:
+          type: string
+        reviewList:
+          type: array
+          items:
+            $ref: "#/components/schemas/Review"
+        listMovieList:
+          type: array
+          items:
+            $ref: "#/components/schemas/MovieList"
+    ReviewDTO:
+      required:
+      - reviewText
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        reviewText:
+          type: string
+        creationDate:
+          type: string
+          format: date
+        creationTime:
+          $ref: "#/components/schemas/LocalTime"
+        userReview:
+          $ref: "#/components/schemas/User"
+        reviewMovie:
+          $ref: "#/components/schemas/Movie"
+    MovieListDTO:
+      required:
+      - description
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        date:
+          type: string
+          format: date
+        time:
+          $ref: "#/components/schemas/LocalTime"
+        description:
+          type: string
+        movies:
+          type: array
+          items:
+            $ref: "#/components/schemas/Movie"
+        userMovie:
+          $ref: "#/components/schemas/User"
+    ReviewInputDTO:
+      required:
+      - movieId
+      - reviewText
+      type: object
+      properties:
+        reviewText:
+          type: string
+        movieId:
+          type: integer
+          format: int64
+    AuthRequestDTO:
+      required:
+      - password
+      - username
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    JwtDTO:
+      type: object
+      properties:
+        token:
+          type: string
+        expires:
+          type: string
+          format: date-time
+    MovieDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        overview:
+          type: string
+        posterPath:
+          type: string
+        movieId:
+          type: integer
+          format: int64
+        movieLists:
+          type: array
+          items:
+            $ref: "#/components/schemas/MovieList"
